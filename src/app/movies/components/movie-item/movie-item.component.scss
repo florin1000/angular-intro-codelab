@@ -1,0 +1,36 @@
+mat-card {
+  width: 500px;
+  margin: 16px;
+}
+
+img {
+  width: 100%;
+}
+
+.details > div {
+  padding: 16px 12px;
+}
+
+.mat-card-header {
+  border-bottom: 1px solid lightgray;
+  .mat-card-title {
+    font-size: 24px;
+  }
+}
+
+.movie-year {
+  font-size: 14px;
+}
+
+.comments {
+  width: 80%;
+}
+
+.mat-card-actions {
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.comment {
+  font-weight: bold;
+}

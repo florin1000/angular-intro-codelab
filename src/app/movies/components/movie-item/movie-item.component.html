@@ -1,0 +1,53 @@
+<mat-card class="movie-item">
+  <mat-card-header>
+    <mat-card-title>
+      {{movie.title}} <span class="movie-year">({{movie.year}})</span>
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{movie.genre}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row" class="details">
+      <div fxFlex="30">
+        <img [src]="movie.poster">
+      </div>
+      <div fxFlex="70">
+        {{movie.plot}}
+      </div>
+    </div>
+    <div *ngIf="!commentSaved">
+      <mat-form-field class="comments">
+        <textarea
+          [(ngModel)]="movieComment"
+          #comment
+          placeholder="Comment"
+          matInput
+          matTextareaAutosize
+          matAutosizeMinRows="1"
+          matAutosizeMaxRows="4"
+        ></textarea>
+      </mat-form-field>
+      <div [ngStyle]="{color: movieComment.trim().length === 0 ? 'firebrick' : 'lightseagreen'}">
+        {{wordCount(comment.value)}}
+      </div>
+    </div>
+    <div *ngIf="commentSaved">
+      <p>
+        Comment:
+      </p>
+      <p class="comment">
+        {{movieComment}}
+      </p>
+    </div>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        [disabled]="movieComment.trim().length === 0"
+        (click)="saveComment()"
+      >
+        {{commentSaved ? 'Edit' : 'Save'}} comment
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

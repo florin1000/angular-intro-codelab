@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngInventory';
+  links = [
+    { path: '/home', icon: 'home', label: 'Home' },
+    { path: '/movies', icon: 'theaters', label: 'Movies' },
+  ];
 }
