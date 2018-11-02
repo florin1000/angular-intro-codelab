@@ -1,5 +1,9 @@
+
+<a [routerLink]="['/movies/new']" mat-raised-button>New Movie</a>
 <ngi-movie-item
-  *ngFor="let movie of movies"
+  *ngFor="let movie of movies$ | async"
   [movie]="movie"
   (commentUpdate)="handleCommentUpdate($event)"
+  (movieDelete)="handleMovieDelete($event)"
 ></ngi-movie-item>
+

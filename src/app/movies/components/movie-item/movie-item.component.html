@@ -10,11 +10,15 @@
   <mat-card-content>
     <div fxLayout="row" class="details">
       <div fxFlex="30">
-        <img [src]="movie.poster">
+          <img [src]="movie.poster" ngiMovieImageFallback="assets/noImage2.png">
       </div>
       <div fxFlex="70">
         {{movie.plot}}
       </div>
+    </div>
+    <div>
+      <p><b>Rating:</b></p>
+      <ngi-rating [(rating)]="movieRating"></ngi-rating>
     </div>
     <div *ngIf="!commentSaved">
       <mat-form-field class="comments">
@@ -29,7 +33,7 @@
         ></textarea>
       </mat-form-field>
       <div [ngStyle]="{color: movieComment.trim().length === 0 ? 'firebrick' : 'lightseagreen'}">
-        {{wordCount(comment.value)}}
+        {{comment.value | wordCount}}
       </div>
     </div>
     <div *ngIf="commentSaved">
@@ -48,6 +52,14 @@
       >
         {{commentSaved ? 'Edit' : 'Save'}} comment
       </button>
+      <button
+        mat-raised-button
+        (click)="handleDelete(movie.id)"
+        color="accent"
+      >
+        Delete movie
+      </button>
+      <a [routerLink]="['/movies', movie.id]" color="primary" mat-raised-button>Edit Movie</a>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>
