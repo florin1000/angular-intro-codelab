@@ -18,6 +18,10 @@
       </div>
     </mat-card-content>
     <div>
+      <div>
+        <p><b>Rating:</b></p>
+        <ngi-rating [(rating)]="movieRating"></ngi-rating>
+      </div>
       <div *ngIf="!commentSaved">
         <mat-form-field class="comments">
           <textarea
@@ -34,10 +38,6 @@
           {{comment.value | wordCount}}
         </div>
       </div>
-      <div>
-        <p><b>Rating:</b></p>
-        <ngi-rating [(rating)]="movieRating"></ngi-rating>
-      </div>
       <div *ngIf="commentSaved">
         <p>
           Comment:
@@ -53,6 +53,13 @@
           (click)="saveComment()"
         >
           {{commentSaved ? 'Edit' : 'Save'}} comment
+        </button>
+        <button
+          mat-raised-button
+          (click)="handleDelete()"
+          color="accent"
+        >
+          Delete movie
         </button>
       </mat-card-actions>
     </div>
